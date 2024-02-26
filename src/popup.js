@@ -14,6 +14,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('extensionsShortcutLink').addEventListener('click', function() {
-        chrome.tabs.update({ url: 'chrome://extensions/shortcuts' });
+        chrome.tabs.create({ url: 'chrome://extensions/shortcuts',
+                             active: true });
     });
 });
