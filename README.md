@@ -5,6 +5,8 @@ windows to fixed sizes and locations using user specified keyboard shortcuts.
 
 On ChromeOS this can be used to easily arrange windows.
 
+Download Quadrilateral on the [Chrome Web Store](https://chromewebstore.google.com/detail/quadrilateral/kfdfnjgpdpcekingbgfklmmfbaiiahhn).
+
 ## Contributing
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for details.
