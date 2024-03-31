@@ -226,7 +226,7 @@ chrome.runtime.onInstalled.addListener(({ reason }) => {
       console.log("extension installed");
     }
     chrome.tabs.create({
-      url: '/src/instructions.html'
+      url: '/src/readme.html'
     });
   }
 });
