@@ -1,7 +1,7 @@
 {
     "name": "Quadrilateral",
     "description": "Resize and move windows using your keyboard",
-    "version": "0.0.8",
+    "version": "1.0.0",
     "manifest_version": 3,
     "icons": {
         "16": "icons/icon16.png",
@@ -17,8 +17,38 @@
     },
     "permissions": [
         "system.display"
-    ],
+    ],  
     "commands": {
+        "thirds-01": {
+            "description": "Thirds 01: Move window to the left third of the screen.",
+            "suggested_key": {"default":"Ctrl+Shift+4"}
+        },
+        "thirds-02": {
+            "description": "Thirds 02: Move window to the middle third of the screen.",
+            "suggested_key": {"default":"Ctrl+Shift+5"}
+        },
+        "thirds-03": {
+            "description": "Thirds 03: Move window to the right third of the screen.",
+            "suggested_key": {"default":"Ctrl+Shift+6"}
+        },
+        "sixths-01": {
+            "description": "Sixths 01: Move window to the top left sixth of the screen."
+        },
+        "sixths-02": {
+            "description": "Sixths 02: Move window to the top middle sixth of the screen."
+        },
+        "sixths-03": {
+            "description": "Sixths 03: Move window to the top right sixth of the screen."
+        },
+        "sixths-04": {
+            "description": "Sixths 04: Move window to the bottom left sixth of the screen."
+        },
+        "sixths-05": {
+            "description": "Sixths 05: Move window to the bottom middle sixth of the screen."
+        },
+        "sixths-06": {
+            "description": "Sixths 06: Move window to the bottom right sixth of the screen."
+        },
         "quarters-01": {
             "description": "Quarters 01: Move window to the top right quarter of screen."
         },
@@ -42,33 +72,6 @@
         },
         "halves-04": {
             "description": "Halves 04: Move window to the right half of screen."
-        },
-        "thirds-01": {
-            "description": "Thirds 01: Move window to the left third of the screen."
-        },
-        "thirds-02": {
-            "description": "Thirds 02: Move window to the middle third of the screen."
-        },
-        "thirds-03": {
-            "description": "Thirds 03: Move window to the right third of the screen."
-        },
-        "sixths-01": {
-            "description": "Sixths 01: Move window to the top left sixth of the screen."
-        },
-        "sixths-02": {
-            "description": "Sixths 02: Move window to the top middle sixth of the screen."
-        },
-        "sixths-03": {
-            "description": "Sixths 03: Move window to the top right sixth of the screen."
-        },
-        "sixths-04": {
-            "description": "Sixths 04: Move window to the bottom left sixth of the screen."
-        },
-        "sixths-05": {
-            "description": "Sixths 05: Move window to the bottom middle sixth of the screen."
-        },
-        "sixths-06": {
-            "description": "Sixths 06: Move window to the bottom right sixth of the screen."
         }
     }
 }
