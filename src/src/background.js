@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const debugFlag = false;
+
 /**
  * @fileoverview background service worker that does the window resize and
  * movement.
@@ -28,11 +30,14 @@ function updateWindowPos(command){
   console.log(command);
   currentWindow = chrome.windows.getCurrent();
   currentWindow.then(currentWindowResolve => {
-    console.log("currentWindowResolve is ", currentWindowResolve);
+    if (debugFlag){
+      console.log("currentWindowResolve is ", currentWindowResolve);
+    }
     displayInfo = chrome.system.display.getInfo();
     displayInfo.then(displayInfoResolve => {
-      console.log("displayInfoResolve is ", displayInfoResolve);
-      
+      if (debugFlag){
+        console.log("displayInfoResolve is ", displayInfoResolve);
+      }
       /**
        * height and width are the height and width of the display the current
        * window is on.
@@ -191,8 +196,9 @@ function updateWindowPos(command){
                         "left": updateLeft,
                         "state": "normal",
                         "drawAttention": false};
-      console.log("updating to ", command, " ", updateInfo);
-      
+      if (debugFlag){
+        console.log("updating to ", command, " ", updateInfo);
+      }
       /**
        * Create the promise to resize and move the window and then execute.
        */
