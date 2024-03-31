@@ -19,58 +19,58 @@
         "system.display"
     ],
     "commands": {
-        "thirds-01": {
+        "01-thirds-01": {
             "description": "Thirds 01: Move window to the left third of the screen.",
             "suggested_key": {"default":"Ctrl+Shift+4"}
         },
-        "thirds-02": {
+        "02-thirds-02": {
             "description": "Thirds 02: Move window to the middle third of the screen.",
             "suggested_key": {"default":"Ctrl+Shift+5"}
         },
-        "thirds-03": {
+        "03-thirds-03": {
             "description": "Thirds 03: Move window to the right third of the screen.",
             "suggested_key": {"default":"Ctrl+Shift+6"}
         },
-        "sixths-01": {
+        "04-sixths-01": {
             "description": "Sixths 01: Move window to the top left sixth of the screen."
         },
-        "sixths-02": {
+        "05-sixths-02": {
             "description": "Sixths 02: Move window to the top middle sixth of the screen."
         },
-        "sixths-03": {
+        "06-sixths-03": {
             "description": "Sixths 03: Move window to the top right sixth of the screen."
         },
-        "sixths-04": {
+        "07-sixths-04": {
             "description": "Sixths 04: Move window to the bottom left sixth of the screen."
         },
-        "sixths-05": {
+        "08-sixths-05": {
             "description": "Sixths 05: Move window to the bottom middle sixth of the screen."
         },
-        "sixths-06": {
+        "09-sixths-06": {
             "description": "Sixths 06: Move window to the bottom right sixth of the screen."
         },
-        "quarters-01": {
+        "10-quarters-01": {
             "description": "Quarters 01: Move window to the top right quarter of screen."
         },
-        "quarters-02": {
+        "11-quarters-02": {
             "description": "Quarters 02: Move window to the bottom right quarter of screen."
         },
-        "quarters-03": {
+        "12-quarters-03": {
             "description": "Quarters 03: Move window to the bottom left quarter of screen."
         },
-        "quarters-04": {
+        "13-quarters-04": {
             "description": "Quarters 04: Move window to the top left quarter of screen."
         },
-        "halves-01": {
+        "14-halves-01": {
             "description": "Halves 01: Move window to the top half of screen."
         },
-        "halves-02": {
+        "15-halves-02": {
             "description": "Halves 02: Move window to the bottom half of screen."
         },
-        "halves-03": {
+        "16-halves-03": {
             "description": "Halves 03: Move window to the left half of screen."
         },
-        "halves-04": {
+        "17-halves-04": {
             "description": "Halves 04: Move window to the right half of screen."
         }
     }
