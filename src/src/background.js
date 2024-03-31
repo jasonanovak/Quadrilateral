@@ -222,7 +222,9 @@ chrome.commands.onCommand.addListener((command) => {
 
 chrome.runtime.onInstalled.addListener(({ reason }) => {
   if (reason === chrome.runtime.OnInstalledReason.INSTALL) {
-    console.log("extension installed");
+    if (debugFlag){
+      console.log("extension installed");
+    }
     chrome.tabs.create({
       url: '/src/install.html'
     });
