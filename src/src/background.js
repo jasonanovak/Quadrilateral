@@ -218,3 +218,12 @@ function updateWindowPos(command){
 chrome.commands.onCommand.addListener((command) => {
   updateWindowPos(command);
 });
+
+chrome.runtime.onInstalled.addListener(({ reason }) => {
+  if (reason === chrome.runtime.OnInstalledReason.INSTALL) {
+    console.log("extension installed");
+    chrome.tabs.create({
+      url: '/src/install.html'
+    });
+  }
+});

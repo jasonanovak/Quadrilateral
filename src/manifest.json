@@ -17,7 +17,7 @@
     },
     "permissions": [
         "system.display"
-    ],  
+    ],
     "commands": {
         "thirds-01": {
             "description": "Thirds 01: Move window to the left third of the screen.",
