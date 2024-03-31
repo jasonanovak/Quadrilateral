@@ -1,6 +1,6 @@
 {
     "name": "Quadrilateral",
-    "description": "Resize and move windows using your keyboard",
+    "description": "A keyboard based window organizer for ChromeOS.",
     "version": "1.0.0",
     "manifest_version": 3,
     "icons": {
