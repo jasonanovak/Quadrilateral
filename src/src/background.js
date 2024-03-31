@@ -59,10 +59,11 @@ function updateWindowPos(command){
        * window should move to.
        */
       
-      if (command == "quarters-01" ||
-          command == "quarters-04" ||
-          command == "quarters-02" ||
-          command == "quarters-03"){
+      if (command == "10-quarters-01" ||
+          command == "11-quarters-02" ||
+          command == "12-quarters-03" ||
+          command == "13-quarters-04"
+          ){
         
         /**
          * updateHeight and updateWidth are the new values to resize the
@@ -72,8 +73,8 @@ function updateWindowPos(command){
         updateHeight = parseInt(height/2);
         updateWidth = parseInt(width/2);
 
-        if (command == "quarters-01" ||
-            command == "quarters-04"){
+        if (command == "10-quarters-01" ||
+            command == "13-quarters-04"){
           
           /**
            * updateTop is the distance from the top of the screen to move the
@@ -95,8 +96,8 @@ function updateWindowPos(command){
           updateTop = displayInfoResolve[0].workArea.height/2;
         }
 
-        if (command == "13-quarters-04" ||
-            command == "12-quarters-03"){
+        if (command == "12-quarters-03" ||
+            command == "13-quarters-04"){
           updateLeft = displayInfoResolve[0].workArea.left;
         }
         else if (command == "10-quarters-01" ||
@@ -172,7 +173,7 @@ function updateWindowPos(command){
         }
 
         if (command == "04-sixths-01" ||
-            command == "07sixths-04"){
+            command == "07-sixths-04"){
            updateLeft = displayInfoResolve[0].workArea.left;
         }
         else if (command == "05-sixths-02" ||
