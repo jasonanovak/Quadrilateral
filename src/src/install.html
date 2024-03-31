@@ -3,25 +3,80 @@
   <head>
     <meta charset="utf-8">
   </head>
-<title>Quadrilateral</title>
+<title>Welcome to Quadrilateral!</title><p>
 <body>
 <script src="./popup.js" type="module"></script>
-Welcome to Quadrilateral!<p>
+<center><h1>Welcome to Quadrilateral!</h1></center>
+<br>
+<h1>What is Quadrilateral</h1><p>
 Quadrilateral is a keyboard based window organizer for ChromeOS.<p>
-You can use Quadrilateral to assign a keyboard shorcut to resize a ChromeOS window to 1/6, 1/4, 1/3, or 1/2 of the screen 
-and move the resized window to a fixed position (e.g. the top left 1/6th or right 1/3rd of the screen).<p>
-<p>
-You need to go  <a href="#" id="extensionsShortcutLink">Chrome Settings > Extensions > Keyboard shortcuts</a>
+You can use Quadrilateral to assign a keyboard shorcut to resize a ChromeOS
+window to 1/6, 1/4, 1/3, or 1/2 of the screen and move the resized window to a
+fixed position (e.g. the top left 1/6th or right 1/3rd of the screen).
+<br>
+<h1>How to Use Quadrilateral</h1><p>
+You need to go  <a href="#" id="extensionsShortcutLink">Chrome Settings >
+Extensions > Keyboard shortcuts</a>
 to configure keyboard shortcuts. There are three configured by default:
 <ul>
     <li>Ctrl+Shift+4 - Resizes and moves the window to the left third of the screen.</li>
     <li>Ctrl+Shift+5 - Resizes and moves the window to the center third of the screen.</li>
     <li>Ctrl+Shift+6 - Resizes and moves the window to the right third of the screen.</li>
 </ul>
-
-<p> 
-<a href="https://github.com/jasonanovak/Quadrilateral">Quadrilateral is open source</a>. 
-Please file all questions/comments/concerns/pull requests on <a href="https://github.com/jasonanovak/Quadrilateral">
-GitHub</a>.
+<p>
+After you configure Quadrilateral's shortcuts, you can then use those shortcuts
+to quickly resize and move the active ChromeOS window.
+<br>
+<h1>FAQs</h1>
+<h2>Why aren't more shortcuts pre-configured?</h2>
+The <a href="https://developer.chrome.com/docs/extensions/reference/api/commands">Chrome commands API</a>
+only allows for four shortcuts to be configured by default.
+<br>
+<h2>How do does the author of Quadrilateral have it configured?</h2>
+Here's the author's configuration:
+<ul>
+  <li>Thirds 01 (Left 1/3rd): Ctrl + Shift + 4</li>
+  <li>Thirds 02 (Center 1/3rd): Ctrl + Shift + 5</li>
+  <li>Thirds 03 (Right 1/3rd: Ctrl + Shift + 6</li>
+  <li>Sixths 01 (Top Left 1/6th): Ctrl + Shift + 1</li>
+  <li>Sixths 02 (Top Center 1/6th): Ctrl + Shift + 2</li>
+  <li>Sixths 03 (Top Right 1/6th): Ctrl + Shift + 3</li>
+  <li>Sixths 04 (Bottom Left 1/6th): Ctrl + Shift + 7</li>
+  <li>Sixths 05 (Bottom Center 1/6th): Ctrl + Shift + 8</li>
+  <li>Sixths 06 (Bottom Right 1/6th): Ctrl + Shift + 9</li>
+  <li>Quarters 01 (Top Right 1/4th): Alt + Home </li>
+  <li>Quarters 02 (Top Left 1/4th): Alt + Page Up</li>
+  <li>Quarters 03 (Bottom Left 1/4th): Alt + Page Down</li>
+  <li>Quarters 04 (Bottom Right 1/4th): Alt + end</li>
+  <li>Halves 01 (Top 1/2th): I don't have this configured as I don't split
+windows this way.</li>
+  <li>Halves 02 (Bottom 1/2th): I don't have this configured as I don't split
+windows this way.</li>
+  <li>Halves 03 (Left 1/2th): Alt + Shift + D</li>
+  <li>Halves 04 (Right 1/2th): Alt + Shift + G</li>
+</ul>
+The author chose these shortcuts as they didn't collide with anything in
+ChromeOS. Some of these are not ergonomic -- they were designed for use with a
+programmable keyboard (e.g. a <a href="https://www.zsa.io/moonlander">ZSA Moonlander</a>
+) where <a href="https://configure.zsa.io/moonlander/layouts/XYVAx/latest/0">
+keys can be programmed with macros to send these shortcuts when those keys are
+held</a>.
+<br>
+<h2>Why does Quadrilateral have Halves 03 and 04 when ChromeOS supports
+these window resize actions natively?</h2>
+Because ChromeOS has an animation associated with it that is slower than Quadrilateral's resize and move.
+<br>
+<h2>I am using macOS or Windows or Linux, can I use this extension?</h2>
+You can, but, it'll only work for Chrome windows (and on ChromeOS most windows are a Chrome window).<p>
+If you're on Linux, your desktop environment probably has some equivalent functionality or add-ons
+(e.g. <a href="https://github.com/lucmos/UltrawideWindows">UltrawideWindows for KDE)</a>.<p>
+If you're on macOS, <a href="https://rectangleapp.com/">Rectangle.app</a> provides similar functionality.
+I'm not familiar enough with Windows to say what the equivalent would be.
+<br>
+<h1>Quadrilateral Source</h1>
+<a href="https://github.com/jasonanovak/Quadrilateral">Quadrilateral is open source</a>.
+<p>
+Please file all questions/comments/concerns/pull requests on
+<a href="https://github.com/jasonanovak/Quadrilateral">GitHub</a>.
 </body>
 </html>
