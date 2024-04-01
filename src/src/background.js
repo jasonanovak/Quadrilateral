@@ -136,19 +136,19 @@ function updateWindowPos(command){
         }
       }
 
-      if (command == "01-thirds-01" ||
-          command == "02-thirds-02" ||
-          command == "03-thirds-03"){
+      if (command == "01-third-left" ||
+          command == "02-third-center" ||
+          command == "03-third-right"){
         updateTop = displayInfoResolve[0].workArea.top;
         updateHeight = height;
         updateWidth = parseInt(width/3);
-        if (command == "01-thirds-01"){
+        if (command == "01-third-left"){
           updateLeft = displayInfoResolve[0].workArea.left;
         }
-        else if (command == "02-thirds-02"){
+        else if (command == "02-third-center"){
           updateLeft = parseInt(width/3);
         }
-        else if (command == "03-thirds-03"){
+        else if (command == "03-third-right"){
           updateLeft = parseInt((width/3)*2);
         }
       }

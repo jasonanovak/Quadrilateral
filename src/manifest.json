@@ -19,16 +19,16 @@
         "system.display"
     ],
     "commands": {
-        "01-thirds-01": {
-            "description": "Thirds 01: Resize and move window to the left third of the screen.",
+        "01-third-left": {
+            "description": "Thirds - Left: Resize and move window to the left third of the screen.",
             "suggested_key": {"default":"Ctrl+Shift+4"}
         },
-        "02-thirds-02": {
-            "description": "Thirds 02: Resize and move window to the middle third of the screen.",
+        "02-third-center": {
+            "description": "Thirds - Center: Resize and move window to the center third of the screen.",
             "suggested_key": {"default":"Ctrl+Shift+5"}
         },
-        "03-thirds-03": {
-            "description": "Thirds 03: Resize and move window to the right third of the screen.",
+        "03-third-right": {
+            "description": "Thirds - Right: Resize and move window to the right third of the screen.",
             "suggested_key": {"default":"Ctrl+Shift+6"}
         },
         "04-sixths-01": {
