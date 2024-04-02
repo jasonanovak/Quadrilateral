@@ -1,7 +1,7 @@
 {
     "name": "Quadrilateral",
     "description": "A keyboard based window organizer for ChromeOS.",
-    "version": "1.0.2",
+    "version": "2.0.0",
     "manifest_version": 3,
     "icons": {
         "16": "icons/icon16.png",
