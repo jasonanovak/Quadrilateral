@@ -31,46 +31,46 @@
             "description": "Thirds - Right: Resize and move window to the right third of the screen.",
             "suggested_key": {"default":"Ctrl+Shift+6"}
         },
-        "04-sixths-01": {
+        "04-sixth-top-left": {
             "description": "Sixths - Top Left: Resize and move window to the top left sixth of the screen."
         },
-        "05-sixths-02": {
+        "05-sixth-top-center": {
             "description": "Sixths - Top Center: Resize and move window to the top center sixth of the screen."
         },
-        "06-sixths-03": {
+        "06-sixth-top-right": {
             "description": "Sixths - Top Right: Resize and move window to the top right sixth of the screen."
         },
-        "07-sixths-04": {
+        "07-sixth-bottom-left": {
             "description": "Sixths - Bottom Left: Resize and move window to the bottom left sixth of the screen."
         },
-        "08-sixths-05": {
+        "08-sixth-bottom-center": {
             "description": "Sixths - Bottom Center: Resize and move window to the bottom center sixth of the screen."
         },
-        "09-sixths-06": {
+        "09-sixth-bottom-right": {
             "description": "Sixths - Bottom Right: Resize and move window to the bottom right sixth of the screen."
         },
-        "10-quarters-01": {
+        "11-quarters-top-right": {
             "description": "Quarters - Top Right: Resize and move window to the top right quarter of screen."
         },
-        "11-quarters-02": {
+        "13-quarters-bottom-right": {
             "description": "Quarters - Bottom Right: Resize and move window to the bottom right quarter of screen."
         },
-        "12-quarters-03": {
+        "12-quarters-bottom-left": {
             "description": "Quarters - Bottom Left: Resize and move window to the bottom left quarter of screen."
         },
-        "13-quarters-04": {
+        "10-quarters-top-left": {
             "description": "Quarters - Top Left: Resize and move window to the top left quarter of screen."
         },
-        "14-halves-01": {
+        "14-halves-top": {
             "description": "Halves - Top: Resize and move window to the top half of screen."
         },
-        "15-halves-02": {
+        "15-halves-bottom": {
             "description": "Halves - Bottom: Resize and move window to the bottom half of screen."
         },
-        "16-halves-03": {
+        "16-halves-left": {
             "description": "Halves - Left: Resize and move window to the left half of screen."
         },
-        "17-halves-04": {
+        "17-halves-right": {
             "description": "Halves - Right: Resize and move window to the right half of screen."
         }
     }
