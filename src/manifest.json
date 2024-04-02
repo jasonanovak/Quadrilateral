@@ -49,17 +49,17 @@
         "09-sixth-bottom-right": {
             "description": "Sixths - Bottom Right: Resize and move window to the bottom right sixth of the screen."
         },
+        "10-quarters-top-left": {
+            "description": "Quarters - Top Left: Resize and move window to the top left quarter of screen."
+        },
         "11-quarters-top-right": {
             "description": "Quarters - Top Right: Resize and move window to the top right quarter of screen."
-        },
-        "13-quarters-bottom-right": {
-            "description": "Quarters - Bottom Right: Resize and move window to the bottom right quarter of screen."
         },
         "12-quarters-bottom-left": {
             "description": "Quarters - Bottom Left: Resize and move window to the bottom left quarter of screen."
         },
-        "10-quarters-top-left": {
-            "description": "Quarters - Top Left: Resize and move window to the top left quarter of screen."
+        "13-quarters-bottom-right": {
+            "description": "Quarters - Bottom Right: Resize and move window to the bottom right quarter of screen."
         },
         "14-halves-top": {
             "description": "Halves - Top: Resize and move window to the top half of screen."
