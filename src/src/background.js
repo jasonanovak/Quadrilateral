@@ -229,4 +229,12 @@ chrome.runtime.onInstalled.addListener(({ reason }) => {
       url: '/src/readme.html'
     });
   }
+  else if (reason === chrome.runtime.OnInstalledReason.UPDATE){
+    if (debugFlag){
+      console.log("extension installed");
+    }
+    chrome.tabs.create({
+      url: '/src/version_history.html'
+    });
+  }
 });
