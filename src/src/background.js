@@ -59,10 +59,10 @@ function updateWindowPos(command){
        * window should move to.
        */
       
-      if (command == "10-quarters-01" ||
-          command == "11-quarters-02" ||
-          command == "12-quarters-03" ||
-          command == "13-quarters-04"
+      if (command == "11-quarters-top-right" ||
+          command == "13-quarters-bottom-right" ||
+          command == "12-quarters-bottom-left" ||
+          command == "10-quarters-top-left"
           ){
         
         /**
@@ -73,8 +73,8 @@ function updateWindowPos(command){
         updateHeight = parseInt(height/2);
         updateWidth = parseInt(width/2);
 
-        if (command == "10-quarters-01" ||
-            command == "13-quarters-04"){
+        if (command == "11-quarters-top-right" ||
+            command == "10-quarters-top-left"){
           
           /**
            * updateTop is the distance from the top of the screen to move the
@@ -91,97 +91,97 @@ function updateWindowPos(command){
           
           updateTop = displayInfoResolve[0].workArea.top;
         }
-        else if (command == "11-quarters-02" ||
-                 command == "12-quarters-03"){
+        else if (command == "13-quarters-bottom-right" ||
+                 command == "12-quarters-bottom-left"){
           updateTop = displayInfoResolve[0].workArea.height/2;
         }
 
-        if (command == "12-quarters-03" ||
-            command == "13-quarters-04"){
+        if (command == "12-quarters-bottom-left" ||
+            command == "10-quarters-top-left"){
           updateLeft = displayInfoResolve[0].workArea.left;
         }
-        else if (command == "10-quarters-01" ||
-                 command == "11-quarters-02"){
+        else if (command == "11-quarters-top-right" ||
+                 command == "13-quarters-bottom-right"){
           updateLeft = displayInfoResolve[0].workArea.width/2;
         }
       }
 
-      if (command == "14-halves-01" ||
-          command == "15-halves-02" ||
-          command == "16-halves-03" ||
-          command == "17-halves-04"){
-        if (command == "14-halves-01" ||
-            command == "15-halves-02"){
+      if (command == "14-halves-top" ||
+          command == "15-halves-bottom" ||
+          command == "16-halves-left" ||
+          command == "17-halves-right"){
+        if (command == "14-halves-top" ||
+            command == "15-halves-bottom"){
           updateHeight = parseInt(height/2);
           updateWidth = width;
           updateLeft = displayInfoResolve[0].workArea.left;
-          if (command == "14-halves-01"){
+          if (command == "14-halves-top"){
             updateTop = displayInfoResolve[0].workArea.top;
           }
-          else if (command == "15-halves-02"){
+          else if (command == "15-halves-bottom"){
             updateTop = parseInt(height/2);
           }
         }
-        else if (command == "16-halves-03" ||
-                 command == "17-halves-04"){
+        else if (command == "16-halves-left" ||
+                 command == "17-halves-right"){
           updateHeight = height;
           updateWidth = parseInt(width/2);
           updateTop = displayInfoResolve[0].workArea.top;
-          if (command == "16-halves-03"){
+          if (command == "16-halves-left"){
             updateLeft = displayInfoResolve[0].workArea.left;
           }
-          else if (command == "17-halves-04"){
+          else if (command == "17-halves-right"){
             updateLeft = parseInt(width/2);
           }
         }
       }
 
-      if (command == "01-thirds-01" ||
-          command == "02-thirds-02" ||
-          command == "03-thirds-03"){
+      if (command == "01-third-left" ||
+          command == "02-third-center" ||
+          command == "03-third-right"){
         updateTop = displayInfoResolve[0].workArea.top;
         updateHeight = height;
         updateWidth = parseInt(width/3);
-        if (command == "01-thirds-01"){
+        if (command == "01-third-left"){
           updateLeft = displayInfoResolve[0].workArea.left;
         }
-        else if (command == "02-thirds-02"){
+        else if (command == "02-third-center"){
           updateLeft = parseInt(width/3);
         }
-        else if (command == "03-thirds-03"){
+        else if (command == "03-third-right"){
           updateLeft = parseInt((width/3)*2);
         }
       }
 
-      if (command == "04-sixths-01" ||
-          command == "05-sixths-02" ||
-          command == "06-sixths-03" ||
-          command == "07-sixths-04" ||
-          command == "08-sixths-05" ||
-          command == "09-sixths-06"){
+      if (command == "04-sixth-top-left" ||
+          command == "05-sixth-top-center" ||
+          command == "06-sixth-top-right" ||
+          command == "07-sixth-bottom-left" ||
+          command == "08-sixth-bottom-center" ||
+          command == "09-sixth-bottom-right"){
         updateHeight = parseInt(height/2);
         updateWidth = parseInt(width/3);
-        if (command == "04-sixths-01" ||
-            command == "05-sixths-02" ||
-            command == "06-sixths-03"){
+        if (command == "04-sixth-top-left" ||
+            command == "05-sixth-top-center" ||
+            command == "06-sixth-top-right"){
           updateTop = displayInfoResolve[0].workArea.top;
         }
-        else if (command == "07-sixths-04" ||
-                 command == "08-sixths-05" ||
-                 command == "09-sixths-06"){
+        else if (command == "07-sixth-bottom-left" ||
+                 command == "08-sixth-bottom-center" ||
+                 command == "09-sixth-bottom-right"){
           updateTop = parseInt(height/2);
         }
 
-        if (command == "04-sixths-01" ||
-            command == "07-sixths-04"){
+        if (command == "04-sixth-top-left" ||
+            command == "07-sixth-bottom-left"){
            updateLeft = displayInfoResolve[0].workArea.left;
         }
-        else if (command == "05-sixths-02" ||
-                 command == "08-sixths-05"){
+        else if (command == "05-sixth-top-center" ||
+                 command == "08-sixth-bottom-center"){
           updateLeft = parseInt(width/3);
         }
-        else if (command == "06-sixths-03" ||
-                 command == "09-sixths-06"){
+        else if (command == "06-sixth-top-right" ||
+                 command == "09-sixth-bottom-right"){
           updateLeft = parseInt((width/3)*2);
         }
       }
@@ -227,6 +227,14 @@ chrome.runtime.onInstalled.addListener(({ reason }) => {
     }
     chrome.tabs.create({
       url: '/src/readme.html'
+    });
+  }
+  else if (reason === chrome.runtime.OnInstalledReason.UPDATE){
+    if (debugFlag){
+      console.log("extension installed");
+    }
+    chrome.tabs.create({
+      url: '/src/version_history.html'
     });
   }
 });
