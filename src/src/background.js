@@ -14,6 +14,15 @@
 
 const debugFlag = true;
 
+function displayCompare(a, b){
+  if (a.workArea.left > b.workArea.left){
+    return 1;
+  } else if (a.workArea.left < b.workArea.left){
+    return -1;
+  }
+  return 0
+}
+
 /**
  * @fileoverview background service worker that does the window resize and
  * movement.
@@ -38,7 +47,7 @@ async function updateWindowPos(command){
   }
 
   if (debugFlag){
-    console.log("currentWindow.top is ", currentWindow.top);
+    console.log("currentWindow.left is ", currentWindow.left);
   }
 
 
@@ -48,39 +57,34 @@ async function updateWindowPos(command){
   // Create bounding boxes, figure out which bounding box the window is in
   // move the window in that bounding box, including offset
 
-  displayInfoCount = 0
+  displayInfo.sort(displayCompare);
+
+  var displayInfoCount = 0;
+
+  var leftOffset = 0;
+
   for (oneDisplayInfo of displayInfo){
-    if (currentWindow.left <= oneDisplayInfo.workArea.left){
-      if (debugFlag){
-        console.log("coming out of loop displayInfoCount is ", displayInfoCount);
-      }
+    console.log("oneDisplayInfo.workArea.left is ", oneDisplayInfo.workArea.left);
+    console.log("oneDisplayInfo.workArea.width is ", oneDisplayInfo.workArea.width);
+
+    if (currentWindow.left >= oneDisplayInfo.workArea.left &&
+        currentWindow.left < (oneDisplayInfo.workArea.left + 
+                              oneDisplayInfo.workArea.width)){
+      console.log("Breaking on display ", oneDisplayInfo);
       break
     }
+    console.log("Adding ", oneDisplayInfo);
     displayInfoCount += 1;
-  }
-  if (displayInfoCount >= displayInfo.length){
-    displayInfoCount = displayInfoCount - 1; 
-  }
-  if (debugFlag){
-    console.log("post loop displayInfoCount is ", displayInfoCount);
+    leftOffset += oneDisplayInfo.workArea.width;
   }
 
+  console.log("leftOffset is ", leftOffset);
+  console.log("displayInfoCount is ", displayInfoCount);
 
+  console.log(displayInfo);
 
-  /**
-   * height and width are the height and width of the display the current
-   * window is on.
-   * 
-   * They're used to calculate the new window size.
-   * 
-   * workArea is used because it is "The usable work area of the display 
-   * within the display bounds. The work area excludes areas of the 
-   * display reserved for OS, for example taskbar and launcher." per 
-   * https://developer.chrome.com/docs/extensions/reference/api/system/display#:~:text=physical%20tablet%20state.-,workArea,-Bounds
-   */
-  
-  let height = displayInfo[displayInfoCount].workArea.height;
-  let width = displayInfo[displayInfoCount].workArea.width;
+  const height = displayInfo[displayInfoCount].workArea.height;
+  const width = displayInfo[displayInfoCount].workArea.width;
 
   /**
    * command is one of the values in the commands array in manifest.json.
@@ -131,7 +135,8 @@ async function updateWindowPos(command){
     }
     else if (command == "11-quarters-top-right" ||
               command == "13-quarters-bottom-right"){
-      updateLeft = displayInfo[displayInfoCount].workArea.width/2;
+      updateLeft = displayInfo[displayInfoCount].workArea.left+
+                   displayInfo[displayInfoCount].workArea.width/2;
     }
   }
 
@@ -175,10 +180,12 @@ async function updateWindowPos(command){
       updateLeft = displayInfo[displayInfoCount].workArea.left;
     }
     else if (command == "02-third-center"){
-      updateLeft = parseInt(width/3);
+      updateLeft = displayInfo[displayInfoCount].workArea.left +
+                   parseInt(width/3);
     }
     else if (command == "03-third-right"){
-      updateLeft = parseInt((width/3)*2);
+      updateLeft = displayInfo[displayInfoCount].workArea.left +
+                   parseInt((width/3)*2);
     }
   }
 
@@ -207,14 +214,18 @@ async function updateWindowPos(command){
     }
     else if (command == "05-sixth-top-center" ||
               command == "08-sixth-bottom-center"){
-      updateLeft = parseInt(width/3);
+      updateLeft = displayInfo[displayInfoCount].workArea.left + 
+                   parseInt(width/3);
     }
     else if (command == "06-sixth-top-right" ||
               command == "09-sixth-bottom-right"){
-      updateLeft = parseInt((width/3)*2);
+      updateLeft = displayInfo[displayInfoCount].workArea.left + 
+                   parseInt((width/3)*2);
     }
   }
   
+//  updateLeft += leftOffset; 
+
   /**
    * updateInfo is the dictionary that specifies the new size and location
    * of the window.
