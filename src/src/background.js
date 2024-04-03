@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const debugFlag = false;
+const debugFlag = true;
 
 /**
  * @fileoverview background service worker that does the window resize and
@@ -37,6 +37,36 @@ async function updateWindowPos(command){
     console.log("displayInfo is ", displayInfo);
   }
 
+  if (debugFlag){
+    console.log("currentWindow.top is ", currentWindow.top);
+  }
+
+
+  // To calculate what display you're on, loop at where the left coordinate
+  // of the window is.
+  
+  // Create bounding boxes, figure out which bounding box the window is in
+  // move the window in that bounding box, including offset
+
+  displayInfoCount = 0
+  for (oneDisplayInfo of displayInfo){
+    if (currentWindow.left <= oneDisplayInfo.workArea.left){
+      if (debugFlag){
+        console.log("coming out of loop displayInfoCount is ", displayInfoCount);
+      }
+      break
+    }
+    displayInfoCount += 1;
+  }
+  if (displayInfoCount >= displayInfo.length){
+    displayInfoCount = displayInfoCount - 1; 
+  }
+  if (debugFlag){
+    console.log("post loop displayInfoCount is ", displayInfoCount);
+  }
+
+
+
   /**
    * height and width are the height and width of the display the current
    * window is on.
@@ -49,8 +79,8 @@ async function updateWindowPos(command){
    * https://developer.chrome.com/docs/extensions/reference/api/system/display#:~:text=physical%20tablet%20state.-,workArea,-Bounds
    */
   
-  let height = displayInfo[0].workArea.height;
-  let width = displayInfo[0].workArea.width;
+  let height = displayInfo[displayInfoCount].workArea.height;
+  let width = displayInfo[displayInfoCount].workArea.width;
 
   /**
    * command is one of the values in the commands array in manifest.json.
@@ -88,20 +118,20 @@ async function updateWindowPos(command){
        * 1/3, or 1/2 of the screen's size.
        */
       
-      updateTop = displayInfoResolve[0].workArea.top;
+      updateTop = displayInfo[displayInfoCount].workArea.top;
     }
     else if (command == "13-quarters-bottom-right" ||
               command == "12-quarters-bottom-left"){
-      updateTop = displayInfoResolve[0].workArea.height/2;
+      updateTop = displayInfo[displayInfoCount].workArea.height/2;
     }
 
     if (command == "12-quarters-bottom-left" ||
         command == "10-quarters-top-left"){
-      updateLeft = displayInfoResolve[0].workArea.left;
+      updateLeft = displayInfo[displayInfoCount].workArea.left;
     }
     else if (command == "11-quarters-top-right" ||
               command == "13-quarters-bottom-right"){
-      updateLeft = displayInfoResolve[0].workArea.width/2;
+      updateLeft = displayInfo[displayInfoCount].workArea.width/2;
     }
   }
 
@@ -113,9 +143,9 @@ async function updateWindowPos(command){
         command == "15-halves-bottom"){
       updateHeight = parseInt(height/2);
       updateWidth = width;
-      updateLeft = displayInfoResolve[0].workArea.left;
+      updateLeft = displayInfo[displayInfoCount].workArea.left;
       if (command == "14-halves-top"){
-        updateTop = displayInfoResolve[0].workArea.top;
+        updateTop = displayInfo[displayInfoCount].workArea.top;
       }
       else if (command == "15-halves-bottom"){
         updateTop = parseInt(height/2);
@@ -125,9 +155,9 @@ async function updateWindowPos(command){
               command == "17-halves-right"){
       updateHeight = height;
       updateWidth = parseInt(width/2);
-      updateTop = displayInfoResolve[0].workArea.top;
+      updateTop = displayInfo[displayInfoCount].workArea.top;
       if (command == "16-halves-left"){
-        updateLeft = displayInfoResolve[0].workArea.left;
+        updateLeft = displayInfo[displayInfoCount].workArea.left;
       }
       else if (command == "17-halves-right"){
         updateLeft = parseInt(width/2);
@@ -138,11 +168,11 @@ async function updateWindowPos(command){
   if (command == "01-third-left" ||
       command == "02-third-center" ||
       command == "03-third-right"){
-    updateTop = displayInfoResolve[0].workArea.top;
+    updateTop = displayInfo[displayInfoCount].workArea.top;
     updateHeight = height;
     updateWidth = parseInt(width/3);
     if (command == "01-third-left"){
-      updateLeft = displayInfoResolve[0].workArea.left;
+      updateLeft = displayInfo[displayInfoCount].workArea.left;
     }
     else if (command == "02-third-center"){
       updateLeft = parseInt(width/3);
@@ -163,7 +193,7 @@ async function updateWindowPos(command){
     if (command == "04-sixth-top-left" ||
         command == "05-sixth-top-center" ||
         command == "06-sixth-top-right"){
-      updateTop = displayInfoResolve[0].workArea.top;
+      updateTop = displayInfo[displayInfoCount].workArea.top;
     }
     else if (command == "07-sixth-bottom-left" ||
               command == "08-sixth-bottom-center" ||
@@ -173,7 +203,7 @@ async function updateWindowPos(command){
 
     if (command == "04-sixth-top-left" ||
         command == "07-sixth-bottom-left"){
-        updateLeft = displayInfoResolve[0].workArea.left;
+        updateLeft = displayInfo[displayInfoCount].workArea.left;
     }
     else if (command == "05-sixth-top-center" ||
               command == "08-sixth-bottom-center"){
