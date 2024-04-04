@@ -14,15 +14,6 @@
 
 const debugFlag = true;
 
-function displayCompare(a, b){
-  if (a.workArea.left > b.workArea.left){
-    return 1;
-  } else if (a.workArea.left < b.workArea.left){
-    return -1;
-  }
-  return 0
-}
-
 /**
  * @fileoverview background service worker that does the window resize and
  * movement.
@@ -36,7 +27,9 @@ function displayCompare(a, b){
  * @param command The command sent by the user to resize and move the window.
  */
 async function updateWindowPos(command){
-  console.log(command);
+  if (debugFlag){
+    console.log(command);
+  }
   currentWindow = await chrome.windows.getCurrent();
   if (debugFlag){
     console.log("currentWindow is ", currentWindow);
@@ -50,39 +43,41 @@ async function updateWindowPos(command){
     console.log("currentWindow.left is ", currentWindow.left);
   }
 
-
-  // To calculate what display you're on, loop at where the left coordinate
-  // of the window is.
-  
-  // Create bounding boxes, figure out which bounding box the window is in
-  // move the window in that bounding box, including offset
-
-  displayInfo.sort(displayCompare);
-
   var displayInfoCount = 0;
 
-  var leftOffset = 0;
+  /**
+   * 
+   * For multi-screen setups, each screen will have a displayInfo in the 
+   * array of displayInfo.
+   * 
+   * Iterate through the displayInfo objects and see which displayInfo
+   * coordinates contain the window.
+   * 
+   * At the end, either 1) the displayInfoCount will be the index of the 
+   * display containing the window or 2) the last display in the array.
+   * 
+   */
 
   for (oneDisplayInfo of displayInfo){
-    console.log("oneDisplayInfo.workArea.left is ", oneDisplayInfo.workArea.left);
-    console.log("oneDisplayInfo.workArea.width is ", oneDisplayInfo.workArea.width);
-
     if (currentWindow.left >= oneDisplayInfo.workArea.left &&
         currentWindow.left < (oneDisplayInfo.workArea.left + 
-                              oneDisplayInfo.workArea.width)){
-      console.log("Breaking on display ", oneDisplayInfo);
-      break
+                              oneDisplayInfo.workArea.width) &&
+        currentWindow.top >= oneDisplayInfo.workArea.top &&
+        currentWindow.top < (oneDisplayInfo.workArea.top + 
+                             oneDisplayInfo.workArea.height)){
+      break;
     }
-    console.log("Adding ", oneDisplayInfo);
-    displayInfoCount += 1;
-    leftOffset += oneDisplayInfo.workArea.width;
+    else {
+      displayInfoCount += 1;
+    }
+                          
   }
 
-  console.log("leftOffset is ", leftOffset);
-  console.log("displayInfoCount is ", displayInfoCount);
-
-  console.log(displayInfo);
-
+  if (debugFlag){
+    console.log("displayInfoCount is ", displayInfoCount);
+    console.log(displayInfo);
+  }
+  
   const height = displayInfo[displayInfoCount].workArea.height;
   const width = displayInfo[displayInfoCount].workArea.width;
 
@@ -126,7 +121,16 @@ async function updateWindowPos(command){
     }
     else if (command == "13-quarters-bottom-right" ||
               command == "12-quarters-bottom-left"){
-      updateTop = displayInfo[displayInfoCount].workArea.height/2;
+
+      // For multi-display scenarios, you need to have the top coordinate
+      // added to 1/2 the height to know where the half way point on the
+      // screen coordinates are.
+
+      // In multiscreen setups, one screen has the top of 0,0, others are
+      // offset from it and can have a negative or positive x or y (or both)
+
+      updateTop = displayInfo[displayInfoCount].workArea.top + parseInt(height/2);
+
     }
 
     if (command == "12-quarters-bottom-left" ||
@@ -135,6 +139,11 @@ async function updateWindowPos(command){
     }
     else if (command == "11-quarters-top-right" ||
               command == "13-quarters-bottom-right"){
+
+      // For multi-display scenarios, you need to have the left coordinate
+      // added to 1/2 the width to know where the half way point on the
+      // screen coordinates are.
+      
       updateLeft = displayInfo[displayInfoCount].workArea.left+
                    displayInfo[displayInfoCount].workArea.width/2;
     }
@@ -165,7 +174,9 @@ async function updateWindowPos(command){
         updateLeft = displayInfo[displayInfoCount].workArea.left;
       }
       else if (command == "17-halves-right"){
-        updateLeft = parseInt(width/2);
+        // Multi-screen scenario handling.
+        updateLeft = displayInfo[displayInfoCount].workArea.left +
+                     parseInt(width/2);
       }
     }
   }
@@ -205,7 +216,8 @@ async function updateWindowPos(command){
     else if (command == "07-sixth-bottom-left" ||
               command == "08-sixth-bottom-center" ||
               command == "09-sixth-bottom-right"){
-      updateTop = parseInt(height/2);
+      // Multi-screen scenario handling
+      updateTop = displayInfo[displayInfoCount].workArea.top + parseInt(height/2);
     }
 
     if (command == "04-sixth-top-left" ||
@@ -214,17 +226,18 @@ async function updateWindowPos(command){
     }
     else if (command == "05-sixth-top-center" ||
               command == "08-sixth-bottom-center"){
+      // Multi-screen scenario handling
       updateLeft = displayInfo[displayInfoCount].workArea.left + 
                    parseInt(width/3);
     }
     else if (command == "06-sixth-top-right" ||
               command == "09-sixth-bottom-right"){
+      // Multi-screen scenario handling
       updateLeft = displayInfo[displayInfoCount].workArea.left + 
                    parseInt((width/3)*2);
     }
   }
   
-//  updateLeft += leftOffset; 
 
   /**
    * updateInfo is the dictionary that specifies the new size and location
