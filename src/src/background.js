@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const debugFlag = true;
+const debugFlag = false;
 
 /**
  * @fileoverview background service worker that does the window resize and
