@@ -162,7 +162,8 @@ async function updateWindowPos(command){
         updateTop = displayInfo[displayInfoCount].workArea.top;
       }
       else if (command == "15-halves-bottom"){
-        updateTop = parseInt(height/2);
+      updateTop = displayInfo[displayInfoCount].workArea.top + 
+                  parseInt(height/2);
       }
     }
     else if (command == "16-halves-left" ||
