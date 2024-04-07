@@ -40,6 +40,7 @@ async function updateWindowPos(command){
   }
 
   if (debugFlag){
+    console.log("currentWindow.top is ", currentWindow.top);
     console.log("currentWindow.left is ", currentWindow.left);
   }
 
