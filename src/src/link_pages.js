@@ -13,8 +13,31 @@
 // limitations under the License.
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('extensionsShortcutLink').addEventListener('click', function() {
-        chrome.tabs.create({ url: 'chrome://extensions/shortcuts',
-                             active: true });
-    });
+//    document.getElementById('extensionsShortcutLink').addEventListener('click', function() {
+//        chrome.tabs.create({ url: 'chrome://extensions/shortcuts',
+//                             active: true });
+//    });
+
+    var el = document.getElementById('extensionsShortcutLink');
+    if (el) {
+        el.addEventListener('click',  function() {
+            chrome.tabs.create({ url: 'chrome://extensions/shortcuts',
+                                 active: true });
+        })
+    }
+
+    el = document.getElementById('extensionsDetailsLink');
+
+    if (el) {
+        el.addEventListener('click',  function() {
+            chrome.tabs.create({ url: 'chrome://extensions/?id=pmjgofekhmioiablnjgickcmgaoklioh',
+                                 active: true });
+        })
+    }
+
+
+//    document.getElementById('extensionsDetailsLink').addEventListener('click', function() {
+//        chrome.tabs.create({ url: 'chrome://extensions/?id=pmjgofekhmioiablnjgickcmgaoklioh',
+//                             active: true });
+//    });
 });
