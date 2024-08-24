@@ -72,6 +72,12 @@
         },
         "17-halves-right": {
             "description": "Halves - Right: Resize and move window to the right half of screen."
+        },
+        "18-twothirds-left": {
+            "description": "Two Thirds - Left: Resize and move window to the left two thirds of screen."
+        },
+        "19-twothirds-right": {
+            "description": "Two Thirds - Right: Resize and move window to the right two thirds of screen."
         }
     }
 }
