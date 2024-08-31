@@ -185,14 +185,31 @@ async function updateWindowPos(command){
 
   if (command == "01-third-left" ||
       command == "02-third-center" ||
-      command == "03-third-right"){
+      command == "03-third-right" || 
+      command == "18-twothirds-left" || 
+      command == "19-twothirds-right" ){
     updateTop = displayInfo[displayInfoCount].workArea.top;
     updateHeight = height;
-    updateWidth = parseInt(width/3);
-    if (command == "01-third-left"){
+
+    if (command == "01-third-left" ||
+        command == "02-third-center" ||
+        command == "03-third-right"){
+      updateWidth = parseInt(width/3);
+    }
+    else if (command == "18-twothirds-left" ||
+             command == "19-twothirds-right"){
+      updateWidth = parseInt(width/3) * 2;    
+    }
+    
+    if (command == "01-third-left" ||
+        command == "18-twothirds-left"){
       updateLeft = displayInfo[displayInfoCount].workArea.left;
     }
-    else if (command == "02-third-center"){
+    else if (command == "02-third-center" || 
+             command == "19-twothirds-right"){
+      // Having the window take up the right 2/3 of the
+      // is the same thing as having it start drawing from
+      // 1/3 from the left side of the screen.
       updateLeft = displayInfo[displayInfoCount].workArea.left +
                    parseInt(width/3);
     }
